@@ -1,8 +1,8 @@
 \# Laboratorio No. 1 - Git
 
-Nombre: Luis Aguilar
+Nombre: Luis de leon
 
-Carné: 29199
+Carné: 1227025
 
 Curso: Métodos e Implementación de Archivos
 
