@@ -1,0 +1,42 @@
+﻿using System;
+using System.IO;
+using System.Collections.Generic;
+using System.Text.Json;
+
+class Program
+{
+    static void Main()
+    {
+        List<Estudiante> estudiantes = new List<Estudiante>();
+
+        string[] lineas = File.ReadAllLines("estudiantes.csv");
+
+        for (int i = 1; i < lineas.Length; i++)
+        {
+            string[] datos = lineas[i].Split(',');
+
+            Estudiante estudiante = new Estudiante
+            {
+                Id = int.Parse(datos[0]),
+                Nombre = datos[1],
+                Carrera = datos[2],
+            };
+
+            estudiantes.Add(estudiante);
+        }
+
+        foreach (Estudiante e in estudiantes)
+        {
+            Console.WriteLine($"{e.Id} - {e.Nombre} - {e.Carrera}");
+        }
+
+        string json = JsonSerializer.Serialize(estudiantes, new JsonSerializerOptions
+        {
+            WriteIndented = true
+        });
+
+        File.WriteAllText("estudiantes.json", json);
+
+        Console.WriteLine("Archivo estudiantes.json creado correctamente.");
+    }
+}
